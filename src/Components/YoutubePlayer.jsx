@@ -20,12 +20,13 @@ const YouTubePlayer = ({ videoId, playerRef }) => {
   };
 
   // Initial dimensions
+const initialDimensions = calculateDimensions();
 
   // Options for the YouTube player
   // Provided in youtube/developer api documentation
   const opts = {
-    height: "774",
-    width: "1376",
+    height: initialDimensions.height.toString(),
+    width: initialDimensions.width.toString(),
     playerVars: {
       autoplay: 1,
       //to remove annotations

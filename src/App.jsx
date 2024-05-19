@@ -108,6 +108,7 @@ const App = () => {
         setCurrentNote={setCurrentNote}
         formatTimestamp={formatTimestamp}
         onOpen={onOpen}
+        playerRef={playerRef}
       />
 
       {/* Add notes modal */}
@@ -116,6 +117,7 @@ const App = () => {
         onClose={onClose}
         onNoteChange={setCurrentNote}
         handleAddNote={handleAddNote}
+        playerRef={playerRef}
       />
     </Box>
   );

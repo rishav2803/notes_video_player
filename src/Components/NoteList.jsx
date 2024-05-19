@@ -3,10 +3,18 @@ import { Box, Card, CardBody, CardHeader, Divider, Flex, Heading, Stack, StackDi
 import { PlusSquareIcon } from '@chakra-ui/icons';
 import Note from './Note';
 
-const NoteList = ({ notes, editIndex, currentNote, handleTimestampClick, handleEditNote, handleSaveNote, handleDeleteNote, setCurrentNote, formatTimestamp, onOpen }) => {
+const NoteList = ({ notes, editIndex, currentNote, handleTimestampClick, handleEditNote, handleSaveNote, handleDeleteNote, setCurrentNote, formatTimestamp, onOpen,playerRef }) => {
 
   // Determine if its a small screen or not
   const isSmallScreen = useBreakpointValue({ base: true, md: false });
+
+  const handleAddNoteClick = () => {
+    // Pause the video if it's playing
+    if (playerRef.current && playerRef.current.getPlayerState() === 1) { 
+      playerRef.current.pauseVideo();     
+    }
+    onOpen(); 
+  };
 
   return (
     <Card p={5} mt="1rem">
@@ -19,9 +27,9 @@ const NoteList = ({ notes, editIndex, currentNote, handleTimestampClick, handleE
             </Text>
           </Box>
           {isSmallScreen ? (
-            <PlusSquareIcon ml="1rem" fontSize="1.3rem" onClick={onOpen}/>
+            <PlusSquareIcon ml="1rem" fontSize="1.3rem" onClick={handleAddNoteClick}/>
           ) : (
-            <Button size="sm" leftIcon={<PlusSquareIcon />} variant="outline" onClick={onOpen}>
+            <Button size="sm" leftIcon={<PlusSquareIcon />} variant="outline" onClick={handleAddNoteClick}>
               Add new note
             </Button>
           )}

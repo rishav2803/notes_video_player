@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, Box } from '@chakra-ui/react';
 import HtmlEditor from '../Components/HtmlEditor'; 
 
-const AddNotesModal = ({ isOpen, onClose, handleAddNote }) => {
+const AddNotesModal = ({ isOpen, onClose, handleAddNote,playerRef }) => {
   const [noteContent, setNoteContent] = useState('');
   const [formatting, setFormatting] = useState({ isBold: false, isItalic: false, isUnderline: false });
 
@@ -13,6 +13,10 @@ const AddNotesModal = ({ isOpen, onClose, handleAddNote }) => {
 
   const handleSaveNote = () => {
     handleAddNote(noteContent, formatting);
+    // replay the video if it's playing
+    if (playerRef.current && playerRef.current.getPlayerState() !== 1) { 
+      playerRef.current.playVideo();     
+    }
     onClose(); 
   };
 
