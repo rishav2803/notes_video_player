@@ -19,7 +19,7 @@ const YouTubePlayer = ({ videoId, playerRef }) => {
     return { width: viewportWidth, height };
   };
 
-  // Initial dimensions
+
 
   // Options for the YouTube player
   // Provided in youtube/developer api documentation
