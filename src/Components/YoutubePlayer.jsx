@@ -20,9 +20,8 @@ const YouTubePlayer = ({ videoId, playerRef }) => {
   };
 
   // Initial dimensions
-const initialDimensions = calculateDimensions();
+  const initialDimensions = calculateDimensions();
 
-  // Options for the YouTube player
   // Provided in youtube/developer api documentation
   const opts = {
     height: initialDimensions.height.toString(),

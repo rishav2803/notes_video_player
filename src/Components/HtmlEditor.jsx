@@ -23,6 +23,8 @@ const HtmlEditor = ({ onChange }) => {
     setIsUnderline(!isUnderline);
   };
 
+  // generate style dynamically 
+  //as the state changes this funciton will run 
   const generateStyle = () => {
     let style = {};
     if (isBold) style.fontWeight = 'bold';
